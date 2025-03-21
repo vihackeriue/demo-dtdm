@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/mvc
+                           http://www.springframework.org/schema/mvc/spring-mvc.xsd
+                           http://www.springframework.org/schema/jdbc
+                           http://www.springframework.org/schema/jdbc/spring-jdbc.xsd http://www.springframework.org/schema/security https://www.springframework.org/schema/security/spring-security.xsd http://www.springframework.org/schema/data/jpa https://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+    <!-- Scan for Spring components -->
+<!--    <context:component-scan base-package="com.example.controller"/>-->
+    <context:annotation-config />
+    <context:component-scan base-package="com.example" />
+<!--    <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/>-->
+
+
+    <!-- Add support for conversion, formatting and validation support -->
+<!--    <context:annotation-config />-->
+<!--    <context:component-scan base-package="com.example" />-->
+    <!-- Enable Spring MVC annotation-driven -->
+<!--    <mvc:annotation-driven>-->
+<!--        <mvc:message-converters>-->
+<!--            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>-->
+<!--            &lt;!&ndash; Bạn có thể thêm các bộ chuyển đổi khác ở đây nếu cần &ndash;&gt;-->
+<!--        </mvc:message-converters>-->
+
+<!--    </mvc:annotation-driven>-->
+
+
+
+    <!-- Internal Resource View Resolver for JSP -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+<!--    <mvc:resources mapping="/template/**" location="/template/"/>-->
+<!--    <mvc:resources mapping="/resources/**" location="/resources/"/>-->
+
+    <!-- Config JPA SQL Server -->
+<!--    <bean id="dataSource"-->
+<!--          class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+<!--        <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />-->
+<!--        <property name="url" value="jdbc:sqlserver://localhost:1433;databaseName=CoffeeManagement;encrypt=true;trustServerCertificate=true;" />-->
+<!--        <property name="username" value="sa" />-->
+<!--        <property name="password" value="123456789" />-->
+<!--    </bean>-->
+
+<!--    &lt;!&ndash; Entity Manager Factory Configuration &ndash;&gt;-->
+<!--    <bean name="entityManagerFactory"-->
+<!--          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">-->
+<!--        <property name="dataSource" ref="dataSource"></property>-->
+<!--        <property name="packagesToScan" value="com.example.entity"></property>-->
+<!--        <property name="jpaVendorAdapter">-->
+<!--            <bean-->
+<!--                    class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">-->
+<!--            </bean>-->
+<!--        </property>-->
+<!--        <property name="jpaProperties">-->
+<!--            <props>-->
+<!--                <prop key="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</prop>-->
+<!--                <prop key="hibernate.show_sql">true</prop>-->
+<!--                <prop key="hibernate.hbm2ddl.auto">none</prop>-->
+<!--            </props>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+<!--    &lt;!&ndash; Setup JPA transaction manager &ndash;&gt;-->
+<!--    <bean id="transactionManager"-->
+<!--          class="org.springframework.orm.jpa.JpaTransactionManager">-->
+<!--        <property name="entityManagerFactory"-->
+<!--                  ref="entityManagerFactory" />-->
+<!--    </bean>-->
+<!--    &lt;!&ndash; Security configuration &ndash;&gt;-->
+<!--    <security:http auto-config="true" use-expressions="true">-->
+<!--        <security:csrf disabled="true"/>-->
+
+<!--        <security:access-denied-handler error-page="/accessDenied" />-->
+<!--        <security:intercept-url pattern="/web/**" access="hasRole('ROLE_USER')"/>-->
+<!--        <security:intercept-url pattern="/manage/manager/**" access="hasAnyRole('ROLE_MANAGER', 'ROLE_ADMIN')"/>-->
+<!--        <security:intercept-url pattern="/manage/admin/**" access="hasRole('ROLE_ADMIN')"/>-->
+<!--        <security:intercept-url pattern="/manage/**" access="hasAnyRole('ROLE_EMPLOYEE', 'ROLE_MANAGER', 'ROLE_ADMIN')"/>-->
+<!--&lt;!&ndash;        <security:intercept-url pattern="/**" access="permitAll"/>&ndash;&gt;-->
+<!--        <security:intercept-url pattern="/register" access="permitAll"/>-->
+<!--        <security:intercept-url pattern="/login" access="permitAll"/>-->
+<!--        <security:intercept-url pattern="/template/**" access="permitAll"/>-->
+<!--        <security:intercept-url pattern="/resources/**" access="permitAll"/>-->
+<!--        <security:intercept-url pattern="/manage/manager/shift/api/roll-attendance/**" access="hasAnyRole('ROLE_MANAGER', 'ROLE_ADMIN', 'ROLE_USER')"/>-->
+
+<!--        <security:form-login 	login-page="/login"-->
+<!--                                login-processing-url="/login"-->
+<!--                                default-target-url="/manage/home"-->
+<!--                                username-parameter="username" password-parameter="password"-->
+<!--                                authentication-failure-url="/login?error=Login failed" />-->
+<!--        <security:session-management invalid-session-url="/login?sessionTimeout"/>-->
+<!--        <security:session-management session-fixation-protection="newSession"/>-->
+
+<!--        &lt;!&ndash; Cấu hình logout &ndash;&gt;-->
+<!--        <security:logout logout-url="/logout"-->
+<!--                         logout-success-url="/login?logout"-->
+<!--                         invalidate-session="true"-->
+<!--                         delete-cookies="JSESSIONID"-->
+<!--                         />-->
+
+<!--    </security:http>-->
+
+
+<!--    <security:authentication-manager >-->
+<!--        <security:authentication-provider user-service-ref="customUserDetailsService">-->
+<!--            <security:password-encoder ref="bcryptEncoder"/>-->
+<!--        </security:authentication-provider>-->
+<!--    </security:authentication-manager>-->
+<!--    <bean id="bcryptEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">-->
+<!--        <constructor-arg value="10" /> &lt;!&ndash; Độ mạnh của mã hóa, thường từ 4 đến 31, giá trị mặc định là 10 &ndash;&gt;-->
+<!--    </bean>-->
+<!--&lt;!&ndash;    <bean id="bcryptEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />&ndash;&gt;-->
+<!--    <bean id="customUserDetailsService" class="com.example.service.impl.CustomUserDetailsService" />-->
+
+<!--    <jpa:repositories base-package="com.example.repository"></jpa:repositories>-->
+</beans>
