@@ -187,6 +187,7 @@
   <build>
     <finalName>dtdm_demo</finalName>
     <plugins>
+      <!-- Plugin để biên dịch code Java -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -199,6 +200,15 @@
           </compilerArgs>
         </configuration>
       </plugin>
+
+      <!-- Plugin để đóng gói WAR -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.4.0</version> <!-- Đã cập nhật -->
+      </plugin>
     </plugins>
   </build>
+
+
 </project>
