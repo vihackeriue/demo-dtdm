@@ -37,7 +37,7 @@
                         <div class="text-center mt-4">
                             <h1 class="h2">Xin Chào!</h1>
                             <p class="lead">
-                                Đăng nhập để tiếp tục 1
+                                Đăng nhập để tiếp tục
                             </p>
                         </div>
 
