@@ -24,7 +24,7 @@ jobs:
           java-version: '17'
           java-package: jdk
           architecture: x64
-          distribution: 'adoptopenjdk'  # Thêm tham số này để chỉ rõ loại JDK
+          distribution: 'temurin'  # Thêm tham số này để chỉ rõ loại JDK
           check-latest: false
 
       # Bước 3: Build ứng dụng với Maven
