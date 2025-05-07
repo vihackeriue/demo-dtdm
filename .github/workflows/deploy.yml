@@ -41,5 +41,5 @@ jobs:
       # Bước 5: Deploy lên AWS EC2
       - name: Deploy to AWS EC2
         run: |
-          scp -i ~/.ssh/id_rsa target/dtdm_demo.war ubuntu@52.207.237.32:/var/lib/tomcat10/webapps/
-          ssh -i ~/.ssh/id_rsa ubuntu@52.207.237.32 'sudo systemctl restart tomcat10'
+          scp -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no target/dtdm_demo.war ubuntu@52.207.237.32:/var/lib/tomcat10/webapps/
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@52.207.237.32 'sudo systemctl restart tomcat10'
