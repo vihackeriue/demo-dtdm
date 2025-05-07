@@ -35,8 +35,10 @@ jobs:
       - name: Set up SSH key
         run: |
           mkdir -p ~/.ssh
-          echo "$AWS_SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          echo "${{ secrets.AWS_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
+          # Thêm vào known_hosts để tránh cảnh báo khi kết nối lần đầu
+          ssh-keyscan -H 52.207.237.32 >> ~/.ssh/known_hosts
 
       # Bước 5: Deploy lên AWS EC2
       - name: Deploy to AWS EC2
