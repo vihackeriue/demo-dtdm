@@ -35,7 +35,7 @@
                     <div class="d-table-cell align-middle">
 
                         <div class="text-center mt-4">
-                            <h1 class="h2">Xin Chào 2222!</h1>
+                            <h1 class="h2">Xin Chào!</h1>
                             <p class="lead">
                                 Đăng nhập để tiếp tục
                             </p>
